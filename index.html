@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spice Garden Demo Restaurant</title>
+    <meta name="description" content="Fine dining, live menu and table reservations at Spice Garden Demo Restaurant">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="announcement">Now taking reservations for the festive season — Book your table today!</div>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Spice Garden</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://restaurant-demo-eight-omega.vercel.app" target="_blank" rel="noopener noreferrer" class="btn admin-btn">Admin Panel</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="hero-panel">
+                    <span class="badge">Fine Dining Experience</span>
+                    <h1>Authentic Flavours, Warm Hospitality</h1>
+                    <p>Spice Garden brings you handcrafted dishes made from fresh, locally sourced ingredients. From sizzling starters to indulgent desserts, every plate is a celebration.</p>
+                    <div class="hero-buttons">
+                        <button type="button" class="btn" id="openConsultationBtn">Reserve a Table</button>
+                    </div>
+                </div>
+                <div class="hero-panel training-panel">
+                    <span class="badge">Today's Special</span>
+                    <h2>Live Menu & Seasonal Offers</h2>
+                    <p>Explore our chef-curated menu with veg and non-veg delights, combo offers and daily specials. Ask us about half-plate portions.</p>
+                    <div class="hero-buttons">
+                        <button type="button" class="btn" id="registerTrainingBtn">Get Live Menu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p class="section-text">A demo restaurant celebrating regional recipes with a modern twist, served in a relaxed and elegant setting.</p>
+            <div class="experts-section">
+                <h3>Meet Our Chefs</h3>
+                <div class="experts-grid">
+                    <article class="expert-card">
+                        <span class="expert-initials">RS</span>
+                        <h4>Chef Rajesh Sharma</h4>
+                        <p class="expert-role">Head Chef</p>
+                        <ul><li>18 years experience</li><li>North Indian cuisine</li></ul>
+                    </article>
+                    <article class="expert-card">
+                        <span class="expert-initials">MK</span>
+                        <h4>Chef Meera Kapoor</h4>
+                        <p class="expert-role">Pastry Chef</p>
+                        <ul><li>10 years experience</li><li>Desserts & baking</li></ul>
+                    </article>
+                    <article class="expert-card">
+                        <span class="expert-initials">AV</span>
+                        <h4>Chef Arun Verma</h4>
+                        <p class="expert-role">Sous Chef</p>
+                        <ul><li>12 years experience</li><li>Continental cuisine</li></ul>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="container">
+            <h2>Our Menu Highlights</h2>
+            <div class="card-grid">
+                <div class="card"><i class="fa-solid fa-drumstick-bite"></i><h3>Starters</h3><p>Crispy veg and non-veg appetisers to begin your meal.</p></div>
+                <div class="card"><i class="fa-solid fa-utensils"></i><h3>Main Course</h3><p>Rich curries, biryanis and continental favourites.</p></div>
+                <div class="card"><i class="fa-solid fa-bread-slice"></i><h3>Rotis & Rice</h3><p>Freshly baked breads and aromatic rice preparations.</p></div>
+                <div class="card"><i class="fa-solid fa-ice-cream"></i><h3>Desserts</h3><p>Sweet endings crafted by our pastry chef.</p></div>
+            </div>
+            <div style="text-align:center;margin-top:30px;">
+                <button type="button" class="btn" id="getLiveMenuBtn">Get Live Menu</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container stats-grid">
+            <div><h2>150+</h2><p>Dishes</p></div>
+            <div><h2>50k+</h2><p>Happy Guests</p></div>
+            <div><h2>15</h2><p>Years</p></div>
+            <div><h2>4.8</h2><p>Guest Rating</p></div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Spaces</h2>
+            <div class="project-grid">
+                <div class="project">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800" alt="Dining hall">
+                    <div class="project-content"><h3>Dining Hall</h3><p>Warm interiors for family dinners.</p></div>
+                </div>
+                <div class="project">
+                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800" alt="Private dining">
+                    <div class="project-content"><h3>Private Dining</h3><p>Intimate spaces for celebrations.</p></div>
+                </div>
+                <div class="project">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800" alt="Kitchen">
+                    <div class="project-content"><h3>Open Kitchen</h3><p>Watch our chefs at work.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600" alt="Food 1">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600" alt="Food 2">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600" alt="Food 3">
+                <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600" alt="Food 4">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600" alt="Food 5">
+                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600" alt="Food 6">
+                <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600" alt="Food 7">
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial">
+        <div class="container">
+            <h2>Guest Review</h2>
+            <blockquote>"The best butter chicken in town and the service was exceptional."</blockquote>
+            <h4>- Mr. Rohit</h4>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Reserve Your Table Tonight</h2>
+            <p>Walk in or book ahead for a memorable evening.</p>
+            <a href="#contactOptionsModal" class="btn" id="openContactOptionsBtn" aria-haspopup="dialog" aria-controls="contactOptionsModal">Contact Us</a>
+        </div>
+    </section>
+
+    <div class="modal" id="contactOptionsModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="contactOptionsTitle">
+        <div class="modal-content contact-options-content">
+            <a href="#" class="modal-close" id="closeContactOptionsModal" aria-label="Close">&times;</a>
+            <h3 id="contactOptionsTitle">Contact Us</h3>
+            <p>Choose how to connect.</p>
+            <div class="modal-actions contact-options-actions">
+                <a href="mailto:hello@spicegarden.demo" class="btn secondary">Email</a>
+                <a href="https://wa.me/919999999999" class="btn" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <a href="tel:+919999999999" class="btn secondary">Call</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="consultModal" aria-hidden="true">
+        <div class="modal-content">
+            <button type="button" class="modal-close" id="closeConsultationModal" aria-label="Close">&times;</button>
+            <h3>Reserve a Table</h3>
+            <p>Share details and we will confirm your reservation.</p>
+            <form id="consultationForm" class="modal-form">
+                <label for="consultName">Name</label>
+                <input type="text" id="consultName" name="name" required>
+                <label for="consultEmail">Email</label>
+                <input type="email" id="consultEmail" name="email" required>
+                <label for="consultMobile">Mobile</label>
+                <input type="tel" id="consultMobile" name="mobile" required>
+                <label for="consultAddress">Address / Notes</label>
+                <textarea id="consultAddress" name="address" required></textarea>
+                <div class="modal-actions">
+                    <button type="button" class="btn secondary" id="cancelConsultationBtn">Cancel</button>
+                    <button type="submit" class="btn" id="submitConsultationBtn">Submit</button>
+                </div>
+                <p class="form-status" id="consultationStatus" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div>
+                <h3>Spice Garden Demo Restaurant</h3>
+                <p>Fine Dining & Catering</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Contact</h3>
+                <p>📞 +91 9999999999</p>
+                <p>✉ hello@spicegarden.demo</p>
+                <p>📍 Demo City</p>
+            </div>
+        </div>
+        <div class="copyright">© 2026 Spice Garden Demo Restaurant. All Rights Reserved.</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
