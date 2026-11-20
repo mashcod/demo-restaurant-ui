@@ -15,6 +15,7 @@
     const sendButton = document.getElementById('sendLiveOrderBtn');
     let menu = [];
     let cart = [];
+    const selectedPortions = {};
 
     const escapeHtml = value => String(value == null ? '' : value).replace(/[&<>"']/g, char => ({
         '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -77,6 +78,12 @@
         itemsContainer.innerHTML = filtered.map(item => {
             const fullPrice = item.offerPriceFull != null ? item.offerPriceFull : item.priceFull;
             const halfPrice = item.offerPriceHalf != null ? item.offerPriceHalf : item.priceHalf;
+            const itemKey = item.id + ':' + item.source;
+            const portion = selectedPortions[itemKey] || 'FULL';
+            const cartLine = cart.find(line => line.menuItemId === item.id && line.menuItemSource === item.source && line.portion === portion);
+            const cartControls = cartLine
+                ? '<div class="live-quantity-stepper"><button type="button" class="live-card-minus" aria-label="Decrease quantity">−</button><strong>' + cartLine.quantity + '</strong><button type="button" class="live-card-plus" aria-label="Increase quantity">+</button></div>'
+                : '<input class="live-quantity" type="number" min="1" value="1" aria-label="Quantity for ' + escapeHtml(item.name) + '"><button type="button" class="btn live-add-button">Add to Cart</button>';
             return '<article class="live-menu-card" data-id="' + Number(item.id) + '" data-source="' + escapeHtml(item.source) + '">' +
                 '<div class="live-menu-card-heading"><div><span class="live-menu-category">' + escapeHtml(item.category) + '</span>' +
                 (item.subcategory ? '<span class="live-menu-subcategory">' + escapeHtml(item.subcategory) + '</span>' : '') + '</div>' +
@@ -85,10 +92,11 @@
                 '<span>Full <strong>' + money(fullPrice) + '</strong>' + (item.offerPriceFull != null ? '<small>' + money(item.priceFull) + '</small>' : '') + '</span>' +
                 '<span>Half <strong>' + (halfPrice != null ? money(halfPrice) : '—') + '</strong>' + (item.offerPriceHalf != null ? '<small>' + money(item.priceHalf) + '</small>' : '') + '</span></div>' +
                 (item.offerLabel ? '<div class="live-menu-offer">' + escapeHtml(item.offerLabel) + '</div>' : '') +
-                '<div class="live-menu-add-row"><select class="live-portion" aria-label="Portion for ' + escapeHtml(item.name) + '">' +
-                '<option value="FULL">Full</option><option value="HALF" ' + (item.priceHalf == null ? 'disabled' : '') + '>Half</option></select>' +
-                '<input class="live-quantity" type="number" min="1" value="1" aria-label="Quantity for ' + escapeHtml(item.name) + '">' +
-                '<button type="button" class="btn live-add-button">Add to Cart</button></div></article>';
+                '<div class="live-menu-add-row' + (cartLine ? ' live-menu-in-cart' : '') + '">' +
+                '<select class="live-portion" aria-label="Portion for ' + escapeHtml(item.name) + '">' +
+                '<option value="FULL" ' + (portion === 'FULL' ? 'selected' : '') + '>Full</option>' +
+                '<option value="HALF" ' + (item.priceHalf == null ? 'disabled' : '') + ' ' + (portion === 'HALF' ? 'selected' : '') + '>Half</option></select>' +
+                '<div class="live-menu-add-row-controls">' + cartControls + '</div></div></article>';
         }).join('');
     };
     const renderCart = () => {
@@ -126,7 +134,28 @@
     categoryFilter.addEventListener('change', () => { updateSubcategories(); renderMenu(); });
     subcategoryFilter.addEventListener('change', renderMenu);
     searchInput.addEventListener('input', renderMenu);
+    itemsContainer.addEventListener('change', event => {
+        if (!event.target.matches('.live-portion')) return;
+        const card = event.target.closest('.live-menu-card');
+        selectedPortions[card.dataset.id + ':' + card.dataset.source] = event.target.value;
+        renderMenu();
+    });
     itemsContainer.addEventListener('click', event => {
+        const stepButton = event.target.closest('.live-card-plus, .live-card-minus');
+        if (stepButton) {
+            const stepCard = stepButton.closest('.live-menu-card');
+            const stepItem = menu.find(candidate => candidate.id === Number(stepCard.dataset.id) && candidate.source === stepCard.dataset.source);
+            const stepPortion = stepCard.querySelector('.live-portion').value;
+            const lineIndex = cart.findIndex(line => line.menuItemId === stepItem.id && line.menuItemSource === stepItem.source && line.portion === stepPortion);
+            if (lineIndex >= 0) {
+                if (stepButton.classList.contains('live-card-plus')) cart[lineIndex].quantity += 1;
+                else if (cart[lineIndex].quantity > 1) cart[lineIndex].quantity -= 1;
+                else cart.splice(lineIndex, 1);
+                renderMenu();
+                renderCart();
+            }
+            return;
+        }
         const button = event.target.closest('.live-add-button');
         if (!button) return;
         const card = button.closest('.live-menu-card');
@@ -137,6 +166,8 @@
         const existing = cart.find(line => line.menuItemId === item.id && line.menuItemSource === item.source && line.portion === portion);
         if (existing) existing.quantity += quantity;
         else cart.push({ menuItemId: item.id, menuItemSource: item.source, portion, quantity });
+        selectedPortions[item.id + ':' + item.source] = portion;
+        renderMenu();
         renderCart();
         setStatus(item.name + ' added to your cart.', 'success');
     });
@@ -177,7 +208,9 @@
             cart = [];
             orderForm.reset();
             renderCart();
-            setStatus('Thanks! Your order #' + result.id + ' has been sent.', 'success');
+            const successMessage = 'Order placed successfully. Please note your order number #' + result.id + ' for reference.';
+            setStatus(successMessage, 'success');
+            window.alert(successMessage);
         } catch (error) {
             setStatus(error.message + '. Please try again.', 'error');
         } finally {

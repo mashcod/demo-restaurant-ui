@@ -1403,3 +1403,9 @@ section h2{
     .live-menu-add-row { grid-template-columns:75px 55px 1fr; gap:5px; }
     .live-menu-add-row .btn { padding:9px 6px; font-size:12px; }
 }
+
+.live-menu-add-row.live-menu-in-cart { grid-template-columns:90px 1fr; }
+.live-menu-add-row-controls { display:contents; }
+.live-quantity-stepper { display:flex; align-items:center; justify-content:center; gap:14px; width:100%; }
+.live-quantity-stepper button { width:36px; height:36px; border:0; border-radius:50%; background:#2563eb; color:#fff; font-size:23px; line-height:1; cursor:pointer; }
+.live-quantity-stepper strong { min-width:18px; text-align:center; font-size:16px; }
