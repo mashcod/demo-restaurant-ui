@@ -193,6 +193,40 @@
         </div>
     </div>
 
+    <div class="modal live-menu-modal" id="liveMenuModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="liveMenuTitle">
+        <div class="modal-content live-menu-content">
+            <button type="button" class="modal-close" id="closeLiveMenuBtn" aria-label="Close live menu">&times;</button>
+            <h3 id="liveMenuTitle">Live Menu</h3>
+            <p>Browse today's menu, add dishes to your cart, and send your order.</p>
+            <p class="live-menu-status" id="liveMenuStatus" role="status" aria-live="polite"></p>
+            <div class="live-menu-filters">
+                <label>Category
+                    <select id="liveMenuCategory"><option value="ALL">All categories</option></select>
+                </label>
+                <label>Subcategory
+                    <select id="liveMenuSubcategory"><option value="ALL">All subcategories</option></select>
+                </label>
+                <label>Search menu
+                    <input type="search" id="liveMenuSearch" placeholder="Search dish, category, or subcategory">
+                </label>
+            </div>
+            <div class="live-menu-items" id="liveMenuItems"></div>
+            <section class="live-cart">
+                <h4>Your Cart <span id="liveCartCount">(0 items)</span></h4>
+                <div id="liveCartItems"></div>
+                <form id="liveOrderForm">
+                    <div class="live-order-customer">
+                        <label>Name (optional)<input type="text" id="liveCustomerName" autocomplete="name"></label>
+                        <label>Phone (optional)<input type="tel" id="liveCustomerPhone" autocomplete="tel"></label>
+                    </div>
+                    <div class="live-cart-footer">
+                        <strong>Total: <span id="liveCartTotal">₹0.00</span></strong>
+                        <button type="submit" class="btn" id="sendLiveOrderBtn" disabled>Send Order</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
     <footer id="contact">
         <div class="container footer-grid">
             <div>
@@ -220,5 +254,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/live-menu.js"></script>
 </body>
 </html>

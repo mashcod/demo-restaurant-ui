@@ -1,5 +1,4 @@
 const openConsultationBtn = document.getElementById('openConsultationBtn');
-const registerTrainingBtn = document.getElementById('registerTrainingBtn');
 const closeConsultationModal = document.getElementById('closeConsultationModal');
 const cancelConsultationBtn = document.getElementById('cancelConsultationBtn');
 const consultModal = document.getElementById('consultModal');
@@ -38,7 +37,6 @@ const closeContactOptions = () => {
 };
 
 openConsultationBtn.addEventListener('click', () => openModal('consultation'));
-registerTrainingBtn.addEventListener('click', () => openModal('training'));
 closeConsultationModal.addEventListener('click', closeModal);
 cancelConsultationBtn.addEventListener('click', closeModal);
 openContactOptionsBtn.addEventListener('click', openContactOptions);
@@ -99,14 +97,6 @@ if (monthSelect && calendarContainer) {
     monthSelect.addEventListener('change', () => renderCalendar(parseInt(monthSelect.value)));
     renderCalendar(parseInt(monthSelect.value) || 1);
 }
-const getLiveMenuBtn = document.getElementById('getLiveMenuBtn');
-const getLiveMenuBtn2 = document.getElementById('registerTrainingBtn');
-const showLiveMenuPlaceholder = () => {
-    alert('Live menu will be available soon. Please check back later.');
-};
-if (getLiveMenuBtn) getLiveMenuBtn.addEventListener('click', showLiveMenuPlaceholder);
-if (getLiveMenuBtn2) getLiveMenuBtn2.addEventListener('click', showLiveMenuPlaceholder);
-
 if (!window.emailjs) {
     console.error('EmailJS library did not load.');
 } else {
